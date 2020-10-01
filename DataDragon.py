@@ -72,11 +72,10 @@ class DataDragon:
 
 
 if __name__ == "__main__":
-    d = DataDragon()
-    print(d.versions())
-    print(d.regions())
-    print(d.languages())
-    print(d.champions())
-    print(d.items())
-    print(d.summoners())
-    print(d.profileicons())
+    print(DataDragon.versions())
+    print(DataDragon.regions())
+    print(DataDragon.languages())
+    print(DataDragon.champions())
+    print(DataDragon.items())
+    print(DataDragon.summoners())
+    print(DataDragon.profileicons())
