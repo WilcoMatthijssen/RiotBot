@@ -1,10 +1,32 @@
-from RiotAPI import RiotAPI #used to call to riot api
-from LoLConstants import LoLConstants
-from DataDragon import DataDragon
-from discord.ext.commands import Bot
+from RiotAPI import RiotAPI  # Used for riot command
+from LoLConstants import LoLConstants  # Used for seasons, maps and modes commands
+from DataDragon import DataDragon 
+
+from discord.ext.commands import Bot  # Used to create the bot and allowing custom commands
+import json  # Used for getting keys from keys.json file
+import os  # Used for checking if keys.json exist
 
 
-Riot = RiotAPI("{KEY}")
+def get_key(filename, key_name):
+    """ Opens json file and returns data from given key_name.
+        Quits when file or key not found"""
+    if os.path.exists(filename):
+        with open(filename, 'r') as json_file:
+            api_keys = json.load(json_file)
+            if key_name in api_keys:
+                return api_keys[key_name]
+            else:
+                print(f"{key_name} not found")
+                quit()
+    else:
+        print("{} doesn't exist.".format(filename))
+        quit()
+
+
+Riot_key = get_key("keys.json", "RiotAPIKey")
+Discord_key = get_key("keys.json", "DiscordAPIKey")
+
+Riot = RiotAPI(Riot_key)
 bot = Bot(command_prefix="!")
 
 
@@ -50,4 +72,5 @@ async def modes(ctx):
         text += "{}. **{}** : {}\n".format(i, mode_info["gameMode"], mode_info["description"])
     await ctx.send(text)
 
-bot.run("KEY")
+
+bot.run(Discord_key)
