@@ -1,6 +1,6 @@
 from RiotAPI import RiotAPI  # Used for riot command
 from LoLConstants import LoLConstants  # Used for seasons, maps and modes commands
-from DataDragon import DataDragon 
+from DataDragon import DataDragon
 
 from discord.ext.commands import Bot  # Used to create the bot and allowing custom commands
 import json  # Used for getting keys from keys.json file
@@ -13,7 +13,7 @@ def get_key(filename, key_name):
     if os.path.exists(filename):
         with open(filename, 'r') as json_file:
             api_keys = json.load(json_file)
-            if key_name in api_keys:
+            if key_name in api_keys and api_keys[key_name] != "KEY":
                 return api_keys[key_name]
             else:
                 print(f"{key_name} not found")

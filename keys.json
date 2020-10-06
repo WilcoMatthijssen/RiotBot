@@ -1,5 +1,5 @@
 {
-  "RiotAPIKey"   :"{RIOT API TOKEN HERE}",
-  "DiscordAPIKey":"{DISCORD API TOKEN HERE}"
+  "RiotAPIKey"   :"KEY",
+  "DiscordAPIKey":"KEY"
 }
 
