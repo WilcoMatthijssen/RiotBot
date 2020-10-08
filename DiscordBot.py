@@ -17,7 +17,6 @@ def get_key(filename, key_name):
                 return api_keys[key_name]
             else:
                 print(f"{key_name} not found")
-                quit()
     else:
         print("{} doesn't exist.".format(filename))
         quit()
